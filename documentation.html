@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceAids - Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .sidebar-link.active { background-color: #f5f3ff; color: #4f46e5; border-right-width: 4px; border-right-color: #4f46e5; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 hidden lg:block sticky top-0 h-screen">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-indigo-600 tracking-tight">SpaceAids</h1>
+                <p class="text-xs text-gray-400 mt-1 uppercase font-semibold">Technical Docs v1.0</p>
+            </div>
+            <nav class="mt-4 px-4 space-y-1">
+                <a href="#introduction" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Introduction</a>
+                <a href="#quick-start" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Quick Start</a>
+                <a href="#backend-setup" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Medusa Backend</a>
+                <a href="#frontend-setup" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Next.js Storefront</a>
+                <a href="#three-d-customizer" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">3D Customizer</a>
+                <a href="#deployment" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Deployment</a>
+                <a href="#partner-program" class="block sidebar-link p-3 rounded-lg hover:bg-gray-50 transition-all font-medium">Partner Program</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-5xl mx-auto px-6 py-12 lg:px-12">
+            
+            <section id="introduction" class="mb-16">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Introduction</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    SpaceAids is a premium Next.js 15 storefront integrated with Medusa V2, designed specifically for brands offering high-end product customization. The standout feature is a fully interactive 3D product customizer with real-time material and skin-tone matching.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-2">Frontend Stack</h4>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Next.js 15 (App Router)</li>
+                            <li>• React Three Fiber (Three.js)</li>
+                            <li>• GSAP Animations</li>
+                            <li>• Tailwind CSS</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <h4 class="font-bold text-gray-900 mb-2">Backend Stack</h4>
+                        <ul class="text-sm text-gray-500 space-y-1">
+                            <li>• Medusa V2 (PostgreSQL)</li>
+                            <li>• Stripe Integration</li>
+                            <li>• Redis Cache</li>
+                            <li>• Supabase Storage (Assets)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quick-start" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Quick Start</h2>
+                <p class="mb-4">To get the project running locally, follow these steps:</p>
+                <ol class="list-decimal list-inside space-y-4 text-gray-600">
+                    <li>
+                        <span class="font-semibold text-gray-900">Clone and Install:</span>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="font-mono text-sm">npm install</code></pre>
+                    </li>
+                    <li>
+                        <span class="font-semibold text-gray-900">Environment Setup:</span>
+                        <p class="text-sm mt-2">Copy <code>.env.template</code> to <code>.env</code> and fill in your Medusa backend URL and Stripe keys.</p>
+                    </li>
+                    <li>
+                        <span class="font-semibold text-gray-900">Run Development Server:</span>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="font-mono text-sm">npm run dev</code></pre>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="three-d-customizer" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 font-primary text-gray-900 mb-6">3D Customizer Logic</h2>
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-xl">
+                    <p class="text-indigo-800 font-medium italic">
+                        "The 3D logic is decoupled from the UI, allowing you to swap GLB models by simply updating the product metadata in the Medusa Admin."
+                    </p>
+                </div>
+                <h4 class="font-bold text-lg mb-2">How it works:</h4>
+                <p class="text-gray-600 mb-4">
+                    The customizer identifies meshes by their name in the GLB file. When a user clicks a part, the system matches the mesh name to the configurable options defined in Medusa.
+                </p>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex items-start gap-2">
+                        <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">TIP</span>
+                        Ensure your GLB meshes are named consistently (e.g., 'primary_shell', 'hinge') to enable targeting.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="partner-program" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Partner Program Setup</h2>
+                <p class="text-gray-600 mb-6">
+                    The Partner Program uses Stripe Pricing Tables and custom Medusa Customer groups. 
+                </p>
+                <div class="bg-gray-100 p-6 rounded-xl border border-gray-200">
+                    <h5 class="font-bold mb-4">Implementation Steps:</h5>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-600">
+                        <li>Create your products in Stripe (Tier 1, Tier 2, etc.)</li>
+                        <li>Generate a Stripe Pricing Table and get the <code>pricing-table-id</code></li>
+                        <li>Update the ID in <code>src/app/[countryCode]/(main)/distributor-partner/page.tsx</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer class="mt-20 pt-10 border-t border-gray-200 text-center text-gray-400 text-sm">
+                <p>© 2026 sokomoto. All rights reserved. Created for Envato CodeCanyon.</p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
